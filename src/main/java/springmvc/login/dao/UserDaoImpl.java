@@ -22,6 +22,7 @@ public class UserDaoImpl implements UserDao {
 		try {
 			System.out.println("======================="+ user.getUserId());
 			int counter = jdbcTemplate.update(sql, user.getUserId(), user.getPassword());
+			// Todo change to sql connector and update
 			
 			return counter;
 
@@ -41,6 +42,8 @@ public class UserDaoImpl implements UserDao {
 			String userId = jdbcTemplate.queryForObject(sql, new Object[] {
 					user.getUserId(), user.getPassword() }, String.class);
 
+			// Todo change to sql connector and execute query
+			
 			return userId;
 			
 		} catch (Exception e) {

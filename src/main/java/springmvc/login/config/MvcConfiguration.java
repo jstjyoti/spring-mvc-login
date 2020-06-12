@@ -62,21 +62,22 @@ public class MvcConfiguration implements WebMvcConfigurer {
 		return new CommonsMultipartResolver();
 	}
 	
-	@Bean
-	public DriverManagerDataSource getDataSource() {
-		DriverManagerDataSource ds = new DriverManagerDataSource();
-		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("/jdbc:mysql://localhost:3306/loginsys?useSSL=false");
-		ds.setUsername("root");
-		ds.setPassword("root");
+//	@Bean
+//	public DriverManagerDataSource getDataSource() {
+//		DriverManagerDataSource ds = new DriverManagerDataSource();
+//		ds.setDriverClassName("com.mysql.jdbc.Driver");
+//		ds.setUrl("/jdbc:mysql://localhost:3306/loginsys?useSSL=false");
+//		ds.setUsername("root");
+//		ds.setPassword("root");
+//
+//		return ds;
+//
+//	}
 
-		return ds;
-
-	}
 
 	@Bean
 	public UserDao getUserDao() {
-		return new UserDaoImpl(getDataSource());
+		return new UserDaoImpl();
 	}
 	
 	

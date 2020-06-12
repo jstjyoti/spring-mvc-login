@@ -35,11 +35,12 @@ public class RegistrationController {
 
 		if (counter > 0) {
 			mv.addObject("msg", "User registration successful.");
+			mv.setViewName("login");
 		} else {
-			mv.addObject("msg", "Incorrect Registration.");
+			mv.addObject("msg", "Already Existing or Incorrect Registration.");
 		}
 
-		mv.setViewName("login");
+		
 
 		return mv;
 

@@ -2,24 +2,22 @@ package springmvc.login.dao;
 
 //import javax.sql.DataSource;
 import java.sql.Connection;
+//import org.springframework.beans.factory.annotation.Autowired;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.PreparedStatement;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import springmvc.login.util.DBConnection;
 
 //import org.springframework.jdbc.core.JdbcTemplate;
 
 import springmvc.login.model.User;
 import springmvc.login.dao.UserDao;
+import springmvc.login.util.DBConnection;
 public class UserDaoImpl implements UserDao {
 
 //	private JdbcTemplate jdbcTemplate;
-	@Autowired
+//	@Autowired
 	Connection con;
-	
 	public UserDaoImpl() {
 //		jdbcTemplate = new JdbcTemplate(dataSource);
 //		jdbcTemplate.setDataSource(dataSource);
@@ -31,14 +29,14 @@ public class UserDaoImpl implements UserDao {
 		
 //		String sql = "INSERT INTO userInfo VALUES(?,?)";
 		
-		String userName  = user.getUserId();
+		String email  = user.getUserId();
 		String password = user.getPassword();
 		
 		try {
-			System.out.println("======================="+ userName);
+			System.out.println("======================="+ email);
 //			int counter = jdbcTemplate.update(sql, user.getUserId(), user.getPassword());
 			
-			String query1 = "select email,password from userInfo where email='"+userName+"'";
+			String query1 = "select email,password from userInfo where email='"+email+"'";
 			
         	PreparedStatement pst = con.prepareStatement(query1);
         	
@@ -47,7 +45,7 @@ public class UserDaoImpl implements UserDao {
 			if(rs.next()) {
 				return -1;
 			}
-			query1 = "insert into userInfo values('"+userName+"', '"+password+"')";
+			query1 = "insert into userInfo values('"+email+"', '"+password+"')";
 			pst = con.prepareStatement(query1);
 			
 			pst.executeUpdate();
@@ -84,7 +82,7 @@ public class UserDaoImpl implements UserDao {
 
             while(resultSet.next()) // Until next row is present otherwise it return false
             {
-             String userNameDB = resultSet.getString("userName"); //fetch the values present in database
+             String userNameDB = resultSet.getString("email"); //fetch the values present in database
              String passwordDB = resultSet.getString("password");
 
               if(userName.equals(userNameDB) && password.equals(passwordDB))

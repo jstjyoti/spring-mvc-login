@@ -17,7 +17,7 @@
 		<java.version>1.8</java.version>
 		<servlet.port>9090</servlet.port>
 		<jetty.stop.port>9091</jetty.stop.port>
-		<spring.version>5.1.3.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 		<cglib.version>3.2.10</cglib.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
